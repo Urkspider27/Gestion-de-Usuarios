@@ -18,7 +18,7 @@ public class Jugador
     }
 }
 
-public class Registro : MonoBehaviour
+public class Registrar : MonoBehaviour
 {
     private Dictionary<int, Jugador> usuarios = new Dictionary<int, Jugador>();
     private int contadorId = 1;
@@ -28,7 +28,7 @@ public class Registro : MonoBehaviour
     public TMP_InputField inputEdad;
 
     [Header("Búsqueda y Borrado")]
-    public TMP_InputField inputIDGeneral; // Para escribir el ID a buscar o borrar
+    public TMP_InputField inputIDGeneral;
 
     [Header("Listado y Feedback")]
     public TextMeshProUGUI textoListado;
@@ -56,15 +56,6 @@ public class Registro : MonoBehaviour
         else
         {
             MostrarNotificacion("Error: Edad no válida");
-        }
-    }
-
-    public void MostrarListado()
-    {
-        textoListado.text = "LISTA DE USUARIOS:\n";
-        foreach (var kvp in usuarios)
-        {
-            textoListado.text += $"ID: {kvp.Key} | {kvp.Value.nombre} | {kvp.Value.edad} años\n";
         }
     }
 
@@ -116,6 +107,15 @@ public class Registro : MonoBehaviour
         else
         {
             MostrarNotificacion("Error: ID a borrar no existe");
+        }
+    }
+
+    private void MostrarListado()
+    {
+        textoListado.text = "LISTA DE USUARIOS:\n";
+        foreach (var kvp in usuarios)
+        {
+            textoListado.text += $"ID: {kvp.Key} | {kvp.Value.nombre} | {kvp.Value.edad} años\n";
         }
     }
 
